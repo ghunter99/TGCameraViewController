@@ -173,7 +173,7 @@
         [_camera insertSublayerWithCaptureView:_captureView atRootView:self.view];
     }
 
-    if ([[TGCamera getOption:kTGCameraOptionHiddenAlbumButton] boolValue] == YES) {
+    if (![[TGCamera getOption:kTGCameraOptionHiddenAlbumButton] boolValue]) {
         // get the latest image from the album
         ALAuthorizationStatus status = [ALAssetsLibrary authorizationStatus];
         if (status != ALAuthorizationStatusDenied) {

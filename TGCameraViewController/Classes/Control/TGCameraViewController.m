@@ -172,12 +172,14 @@
         _wasLoaded = YES;
         [_camera insertSublayerWithCaptureView:_captureView atRootView:self.view];
     }
-    
-    // get the latest image from the album
-    ALAuthorizationStatus status = [ALAssetsLibrary authorizationStatus];
-    if (status != ALAuthorizationStatusDenied) {
-        // access to album is authorised
-        [self latestPhoto];
+
+    if ([[TGCamera getOption:kTGCameraOptionHiddenAlbumButton] boolValue] == YES) {
+        // get the latest image from the album
+        ALAuthorizationStatus status = [ALAssetsLibrary authorizationStatus];
+        if (status != ALAuthorizationStatusDenied) {
+            // access to album is authorised
+            [self latestPhoto];
+        }
     }
 }
 
